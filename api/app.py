@@ -10,12 +10,19 @@ import os
 app = Flask(__name__)
 CORS(app, resources={"/predict": {"origins": "http://localhost:3000"}})
 
+file_path = os.path.join(os.getcwd(), 'data', 'predicted_orders_this_year.csv')
 
 # "/"というルート（URL）にアクセスしたときの動作を定義
 @app.route("/")
-def hello():
-    return "Hello, World!"
-
+def home():
+    try:
+        # Attempt to open the file
+        with open(file_path, 'r') as file:
+            # Do something with the file
+            data = file.read()
+        return "File accessed successfully!"
+    except FileNotFoundError:
+        return f"File not found: {file_path}"
 
 # @app.route('/predict', methods=['GET'])
 # def send_csv_file():
