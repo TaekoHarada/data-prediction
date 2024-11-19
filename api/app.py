@@ -31,7 +31,7 @@ def hello():
 @app.route('/predict', methods=['GET'])
 def send_json_data():
     # Load the CSV file into a pandas DataFrame
-    file_path = '../data/predicted_orders_this_year.csv'
+    file_path = './data/predicted_orders_this_year.csv'
 
     print("Current working directory:", os.getcwd())
 
