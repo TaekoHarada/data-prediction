@@ -10,7 +10,7 @@ import os
 app = Flask(__name__)
 CORS(app, resources={"/predict": {"origins": "http://localhost:3000"}})
 
-file_path = os.path.join(os.getcwd(), 'data', 'predicted_orders_this_year.csv')
+file_path = os.path.join(os.getcwd(), 'predicted_orders_this_year.csv')
 
 # "/"というルート（URL）にアクセスしたときの動作を定義
 @app.route("/")
@@ -38,7 +38,7 @@ def home():
 @app.route('/predict', methods=['GET'])
 def send_json_data():
     # Load the CSV file into a pandas DataFrame
-    file_path = './data/predicted_orders_this_year.csv'
+    file_path = 'predicted_orders_this_year.csv'
 
     print("Current working directory:", os.getcwd())
 
