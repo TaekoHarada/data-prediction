@@ -49,7 +49,7 @@ def send_json_data():
     except Exception as e:
         return str(e), 500
 
-if __name__ == "__main__":
-    app.run(debug=True)
-
-
+if __name__ == '__main__':
+    # Get the PORT from the environment variables or default to 5000
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
