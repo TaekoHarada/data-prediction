@@ -8,7 +8,10 @@ import os
 
 
 app = Flask(__name__)
-CORS(app, resources={"/predict": {"origins": "http://localhost:3000"}})
+CORS(app, resources={"/predict": {"origins": [
+            "http://localhost:3000",  # Development frontend
+            "https://capstone-prototype-six.vercel.app"  # Vercel app domain
+        ]}})
 
 file_path = os.path.join(os.getcwd(), 'predicted_orders_this_year.csv')
 
@@ -58,5 +61,5 @@ def send_json_data():
 
 if __name__ == '__main__':
     # Get the PORT from the environment variables or default to 5000
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5001))
     app.run(host='0.0.0.0', port=port)
